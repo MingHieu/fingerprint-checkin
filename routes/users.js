@@ -29,7 +29,7 @@ router.get('/create-fingerprint', async function (req, res, next) {
     'ptit-iot-fingerprint-checkin',
     JSON.stringify({
       type: 'create',
-      id: count,
+      id: count + 1,
     })
   );
   res.send();

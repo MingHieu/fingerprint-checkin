@@ -17,10 +17,14 @@ const handleMessage = async (data) => {
     socket.get().emit('fingerprint-created', { id: data.id });
   }
   if (data.type === 'checkin') {
-    const attendance = await attendanceService.create({
-      fingerprintId: data.id,
-    });
-    socket.get().emit('checkin', attendance);
+    try {
+      const attendance = await attendanceService.create({
+        fingerprintId: data.id,
+      });
+      socket.get().emit('checkin', attendance);
+    } catch (error) {
+      socket.get().emit('checkin-error');
+    }
   }
 };
 

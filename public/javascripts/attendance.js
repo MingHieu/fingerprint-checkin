@@ -17,3 +17,7 @@ socket.on('checkin', (data) => {
     </tr>
     ` + attendances.innerHTML;
 });
+
+socket.on('checkin-error', (data) => {
+  FuiToast.error(`Nhân viên không tồn tại`);
+});
